@@ -12,6 +12,21 @@ services:
       - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
       - WATCHDOG_IGNORE_PATTERNS=/app/__pycache__/*
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/teachbot
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=teachbot
     restart: unless-stopped
 
   # frontend:
@@ -30,3 +45,6 @@ services:
   #   depends_on:
   #     - backend
   #   restart: unless-stopped 
+
+volumes:
+  postgres_data: 

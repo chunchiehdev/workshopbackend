@@ -15,4 +15,4 @@ ENV PYTHONDONTWRITEBYTECODE=1
 EXPOSE 5000
 
 # Run with uvicorn for FastAPI
-CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5000", "--reload"] 
+CMD ["python", "-m", "app.main"] 
