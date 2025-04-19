@@ -10,11 +10,9 @@ COPY . .
 
 # Environment variables for development
 ENV PYTHONUNBUFFERED=1
-ENV FLASK_DEBUG=1
-ENV FLASK_ENV=development
 ENV PYTHONDONTWRITEBYTECODE=1
 
 EXPOSE 5000
 
-# Use dev.py for hot reloading
-CMD ["python", "app.py"] 
+# Run with uvicorn for FastAPI
+CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5000", "--reload"] 

@@ -9,8 +9,7 @@ services:
       - .:/app
       - /app/__pycache__
     environment:
-      - FLASK_ENV=development
-      - FLASK_DEBUG=1
+      - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
       - WATCHDOG_IGNORE_PATTERNS=/app/__pycache__/*
     restart: unless-stopped
